@@ -4,43 +4,68 @@ A command-line based Student Management System built using Python and Object-Ori
 
 ## Features
 
-* Add students
-* View all students
-* Delete students
-* Automatic student count tracking
-* Average marks calculation
-* JSON save/load system
-* Persistent data storage
-* Object-Oriented Programming (OOP)
+* Add Students
+* View All Students
+* Delete Students
+* Edit Student Information
+* Search Student by Roll Number
+* Section-wise Average Marks
+* Automatic Student Count Tracking
+* Persistent JSON Data Storage
+* Object-Oriented Program Structure
+* Save & Load System
 
 ## Concepts Used
 
 * Classes & Objects
 * Class Methods
 * JSON File Handling
-* Lists & Dictionaries
+* File Persistence
+* CRUD Operations
 * Exception Handling
+* Lists & Loops
 * Functions
-* Loops & Conditions
+* Object Serialization & Deserialization
 
-## Technologies
+## Technologies Used
 
 * Python 3
 
 ## How to Run
 
-```bash
+```bash id="c4g8vr"
 python main.py
+```
+
+## Project Structure
+
+```text id="7kq0pu"
+student-management-system/
+│
+├── main.py
+├── students.json
+└── README.md
 ```
 
 ## Future Improvements
 
-* Edit student details
-* Search students
-* Sort students by marks
-* Topper finder
-* Better validation
-* GUI version
+* Student Ranking System
+* Topper Finder
+* Pass/Fail System
+* Grade Calculator
+* Duplicate Roll Number Validation
+* Section-wise Student Count
+* Report Card Generator
+* GUI Version
+
+## What I Learned
+
+* Building CLI applications
+* Managing persistent data using JSON
+* Working with classes and objects
+* Handling real-world program logic
+* Updating shared class data correctly
+* Structuring larger Python programs
 
 ## Author
 
