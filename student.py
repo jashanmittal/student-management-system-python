@@ -75,7 +75,10 @@ def menu():
         print("1. Add Student\n" \
         "2. View All Students\n" \
         "3. Delete Student\n"
-        "4. Exit")
+        "4. Edit Student Info\n" \
+        "5. Search Student\n" \
+        "6. Average Marks\n" \
+        "7. Exit")
 
         choice = input()
 
@@ -89,13 +92,21 @@ def menu():
                 print(student)
                 time.sleep(0.5)
 
-        elif choice == "4":
+        elif choice == "7":
             save()
             exit()
 
         elif choice == "3":
             delete_student()
+
+        elif choice == "4":
+            edit()
                 
+        elif choice == "5":
+            search()
+
+        elif choice == "6":
+            average()
 
 def add_student():
     name = input("Add Student's Name: ")
@@ -135,5 +146,68 @@ def delete_student():
     else:
         print("Invalid Choice")
 
+
+def edit():
+    user = input("Enter the roll_no of student to edit: ")
+    found = False
+
+    for student in students:
+        old_marks = student.marks
+        if user == student.roll_no:
+            found = True
+            new_name = input("Enter new name: ")
+            new_section = input("Enter new section: ")
+            new_roll_no = input("Enter new roll no.: ")
+            new_marks = int(input("Enter new marks: "))
+
+            student.name = new_name
+            student.section = new_section
+            student.roll_no = new_roll_no
+            student.marks = new_marks
+            Student.total_marks += new_marks - old_marks
+
+            print("Edited Successfully")
+            save()
+            time.sleep(1)
+        
+    if not found:
+        print("Invalid Input")
+        time.sleep(1)
+
+
+def search():
+    found = False
+    user = input("Enter roll no. to search: ")
+
+    for student in students:
+        if user == student.roll_no:
+            print(f"""
+------------------------------------
+Name : {student.name}
+Section : {student.section}
+Roll No. : {student.roll_no}
+Marks : {student.marks}
+------------------------------------""")
+            found = True
+            time.sleep(1)
+    if not found:
+        print("Invalid Input")
+
+
+def average():
+    user = input("Enter section you want to find average of: ").upper()
+    count = 0
+    total = 0
+    try:
+        for student in students:
+            if student.section == user:
+                total += student.marks
+                count += 1
+
+        average_marks = total/count
+        print(f"Average of {user} section is : {average_marks}")
+        time.sleep(1)
+    except ZeroDivisionError:
+        print("This section has no students")
 
 menu()
