@@ -78,7 +78,9 @@ def menu():
         "4. Edit Student Info\n" \
         "5. Search Student\n" \
         "6. Average Marks\n" \
-        "7. Exit")
+        "7. Topper Student\n" \
+        "8. Check pass/fail\n" \
+        "9. Exit")
 
         choice = input()
 
@@ -92,7 +94,7 @@ def menu():
                 print(student)
                 time.sleep(0.5)
 
-        elif choice == "7":
+        elif choice == "9":
             save()
             exit()
 
@@ -108,14 +110,28 @@ def menu():
         elif choice == "6":
             average()
 
+        elif choice == "7":
+            topper()
+
+        elif choice == "8":
+            passing()
+
 def add_student():
     name = input("Add Student's Name: ")
-    section = input("Enter Section: ")
-    roll_no = input("Enter Roll No.: ")
+    section = input("Enter Section: ").upper().strip()
+    roll_no = input("Enter Roll No.: ").strip()
+
+    for student in students:
+        if student.roll_no == roll_no:
+            print("This Roll No. already exists")
+            time.sleep(1)
+            return
+
     marks = int(input("Enter marks: "))
 
     student = Student(name, section, roll_no, marks)
     students.append(student)
+
     save()
     print("Added successfully")
 
@@ -124,7 +140,7 @@ def delete_student():
     for index, student in enumerate(students, start=1):
         print(f"""
 ------------------------------------------
-{index}. Name : {student.name}
+{index}.       Name : {student.name}
          Section : {student.section}
          Roll No. : {student.roll_no}
          Marks : {student.marks}
@@ -150,14 +166,20 @@ def delete_student():
 def edit():
     user = input("Enter the roll_no of student to edit: ")
     found = False
+    old_marks = student.marks
 
     for student in students:
-        old_marks = student.marks
         if user == student.roll_no:
             found = True
             new_name = input("Enter new name: ")
-            new_section = input("Enter new section: ")
+            new_section = input("Enter new section: ").upper().strip()
             new_roll_no = input("Enter new roll no.: ")
+
+            for s in students:
+                if s.roll_no == new_roll_no:
+                    print("Roll No. Already Exists")
+                    return
+
             new_marks = int(input("Enter new marks: "))
 
             student.name = new_name
@@ -209,5 +231,54 @@ def average():
         time.sleep(1)
     except ZeroDivisionError:
         print("This section has no students")
+
+
+def topper():
+    user = input("1. Section Topper    2. School Topper\n")
+
+    if user == "2":
+        top = max(students, key=lambda student: student.marks)
+
+        if not students:
+            print("No students available")
+            return
+            
+        print(f"Topper : {top.name}\n"
+              f"Marks : {top.marks}")
+        time.sleep(1)
+
+    elif user == "1":
+        choice = input("Enter section to check: ").upper()
+
+        section_topper = [student for student in students if student.section == choice]
+
+        if not section_topper:
+            print("This section has no students")
+
+        else:
+            top = max(section_topper, key=lambda student: student.marks)
+
+            print(f"Topper : {top.name}\n"
+                f"Marks : {top.marks}")
+
+    time.sleep(1)
+
+
+def passing():
+    found = False
+    user = input("Enter the roll no. to check: ")
+    for student in students:
+        if student.roll_no == user and student.marks >=40:
+            found = True
+            print("PASS")
+
+        elif student.roll_no == user and student.marks <40:
+            found = True
+            print("FAIL")
+
+    if not found:
+        print("Invalid Input")
+    time.sleep(1)
+
 
 menu()
