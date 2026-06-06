@@ -1,72 +1,50 @@
-# Student Management System (Python CLI)
+# Student Management System (Python)
 
 A command-line based Student Management System built using Python and Object-Oriented Programming concepts.
 
 ## Features
 
-* Add Students
-* View All Students
-* Delete Students
-* Edit Student Information
-* Search Student by Roll Number
-* Section-wise Average Marks
-* Automatic Student Count Tracking
-* Persistent JSON Data Storage
-* Object-Oriented Program Structure
-* Save & Load System
+* Add students
+* View all students
+* Edit student information
+* Delete students
+* Search students by roll number
+* Calculate average marks by section
+* Find school topper
+* Find section topper
+* Check pass/fail status
+* JSON file storage (data persistence)
+* Duplicate roll number validation
 
 ## Concepts Used
 
-* Classes & Objects
+* Python Classes & Objects
 * Class Methods
-* JSON File Handling
-* File Persistence
+* File Handling
+* JSON Storage
+* List Comprehensions
+* Lambda Functions
+* Input Validation
 * CRUD Operations
-* Exception Handling
-* Lists & Loops
-* Functions
-* Object Serialization & Deserialization
 
-## Technologies Used
+## Technologies
 
 * Python 3
 
 ## How to Run
 
-```bash id="c4g8vr"
+```bash
 python main.py
-```
-
-## Project Structure
-
-```text id="7kq0pu"
-student-management-system/
-│
-├── main.py
-├── students.json
-└── README.md
 ```
 
 ## Future Improvements
 
-* Student Ranking System
-* Topper Finder
-* Pass/Fail System
-* Grade Calculator
-* Duplicate Roll Number Validation
-* Section-wise Student Count
-* Report Card Generator
-* GUI Version
-
-## What I Learned
-
-* Building CLI applications
-* Managing persistent data using JSON
-* Working with classes and objects
-* Handling real-world program logic
-* Updating shared class data correctly
-* Structuring larger Python programs
+* GUI version using Tkinter
+* Database integration using SQLite
+* Grade system
+* Ranking system
+* Attendance tracking
 
 ## Author
 
-Made by Jashan Mittal
+Jashan Mittal
